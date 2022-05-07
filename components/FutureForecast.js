@@ -1,22 +1,35 @@
 import React from 'react'
 import {View, Text, Image, StyleSheet} from 'react-native'
+import moment from 'moment-timezone'
+const FutureForecast = ({data}) => {
+    return (
+        <View style={{flexDirection: 'row'}}>
 
-const FutureForecast = () => {
-  return (
-    <View style={{flexDirection: 'row'}}>
+            {
+                data && data.length > 0 ? 
 
-<FutureForecastItem />
+                data.map((data, idx) => (
 
-    </View>
-  )
+                    idx !== 0 &&  <FutureForecastItem key={idx} forecastItem={data}/>
+                ))
+
+                :
+
+                <View/>
+            }
+          
+            
+
+        </View>
+    )
 }
 
 const FutureForecastItem = ({forecastItem}) => {
-    // const img = {uri: "http://openweathermap.org/img/wn/"+forecastItem.weather[0].icon+"@2x.png"}
+    const img = {uri: "http://openweathermap.org/img/wn/"+forecastItem.weather[0].icon+"@2x.png"}
     return (
         <View  style={styles.futureForecastItemContainer}>
             <Text  style={styles.day}>{moment(forecastItem.dt * 1000).format('ddd')}</Text>
-            <Image  style={styles.image} />
+            <Image source={img} style={styles.image} />
             <Text  style={styles.temp}>Night - {forecastItem.temp.night}&#176;C</Text>
             <Text  style={styles.temp}>Day - {forecastItem.temp.day}&#176;C</Text>
 
@@ -24,8 +37,8 @@ const FutureForecastItem = ({forecastItem}) => {
     )
 }
 
-
 export default FutureForecast
+
 
 const styles = StyleSheet.create({
     image: {
