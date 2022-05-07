@@ -24,10 +24,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "package": "me.amritanshu.weatherapp",
-      "versionCode": 1,
-      "permissions":["LOCATION"]
+      },  
+      "android": {
+        "package": "in.amritanshu.weather-app",
+        "versionCode": 1,
+        "permissions":["LOCATION"]
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
